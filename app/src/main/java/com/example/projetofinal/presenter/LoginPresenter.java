@@ -46,6 +46,7 @@ public class LoginPresenter implements LoginPresenterContract.presenter{
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCustomToken:success");
                             view.message("Logado com sucesso");
+
                             FirebaseUser user = mAuth.getCurrentUser();
                             //view.entrar();
                             //updateUI(user);

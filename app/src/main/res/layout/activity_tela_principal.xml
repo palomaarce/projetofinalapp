@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#88D9DE"
+    android:backgroundTint="#88D9DE"
+    tools:context=".view.TelaPrincipalActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Categorias"
+        android:textColor="#090909"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4"/>
+
+    <ImageView
+        android:id="@+id/image_logo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:srcCompat="@drawable/logoprincipal"
+
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <LinearLayout
+        android:id="@+id/shape_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_container"
+        android:orientation="vertical"
+        android:paddingHorizontal="15dp"
+        android:paddingTop="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="26dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvCardapio"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:elevation="0dp"
+            app:cardBackgroundColor="#88D9DE"
+            app:cardCornerRadius="20dp">
+
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="20dp"
+                android:text="Cardápio"
+
+                android:textColor="@color/black"
+                android:textSize="25dp" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                app:srcCompat="@drawable/ic_baseline_restaurant_menu_24" />
+
+        </androidx.cardview.widget.CardView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvReceitas"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:elevation="0dp"
+            app:cardBackgroundColor="#88D9DE"
+            app:cardCornerRadius="20dp">
+
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="20dp"
+                android:text="Receitas"
+
+                android:textColor="@color/black"
+                android:textSize="25dp" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                app:srcCompat="@drawable/ic_baseline_menu_book_24" />
+
+        </androidx.cardview.widget.CardView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvContador"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:elevation="0dp"
+            app:cardBackgroundColor="#88D9DE"
+            app:cardCornerRadius="20dp">
+
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="20dp"
+                android:text="Contador de calorias"
+
+                android:textColor="@color/black"
+                android:textSize="25dp" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                app:srcCompat="@drawable/ic_baseline_calculate_24" />
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
