@@ -1,38 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="5dp"
-    android:layout_marginLeft="5dp"
-    android:layout_marginTop="5dp"
-    android:layout_marginEnd="5dp"
-    android:layout_marginRight="5dp"
-    android:layout_marginBottom="5dp"
-    android:background="@color/white">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#88D9DE"
+    android:backgroundTint="#88D9DE">
+
 
 
     <LinearLayout
+        android:id="@+id/shape_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_container"
         android:orientation="vertical"
         android:paddingHorizontal="15dp"
         android:paddingTop="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.0"
         tools:layout_editor_absoluteX="26dp">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cvReceitas"
+            android:id="@+id/cvCardapio"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="90dp"
             android:elevation="0dp"
             app:cardBackgroundColor="#88D9DE"
             app:cardCornerRadius="20dp">
 
 
             <TextView
-                android:id="@+id/tvNomeReceita"
+                android:id="@+id/tvNomeReceita2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -40,20 +39,22 @@
                 android:text="text"
 
                 android:textColor="@color/black"
-                android:textSize="18dp" />
+                android:textSize="25dp" />
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="60dp"
+                android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:layout_gravity="right"
-                app:srcCompat="@drawable/ic_baseline_chevron_right_24" />
+                android:layout_gravity="end"
+                app:srcCompat="@drawable/ic_baseline_restaurant_menu_24" />
 
         </androidx.cardview.widget.CardView>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="10dp" />
-    </LinearLayout>
 
+
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

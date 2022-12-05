@@ -3,6 +3,7 @@ package com.example.projetofinal.adapter;
 import static android.content.ContentValues.TAG;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projetofinal.R;
 import com.example.projetofinal.model.Receita;
+import com.example.projetofinal.view.DetalheReceitaActivity;
 
 import java.util.List;
 
@@ -32,6 +34,7 @@ public class ReceitaAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.receita_tem_activity, parent, false);
+        //View view = inflater.inflate(R.layout.receita_item_activity, parent, false);
 
         return new ReceitaViewHolder(view);
     }
@@ -61,12 +64,18 @@ class ReceitaViewHolder extends RecyclerView.ViewHolder{
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "onClick: " + nomeReceita.getText());
+
+                Intent intent = new Intent(view.getContext(), DetalheReceitaActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("nomeReceita", nomeReceita.getText());
+                view.getContext().startActivity(intent);
             }
         });
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "onClick: clicou na opção " + view);
+
             }
         });
     }

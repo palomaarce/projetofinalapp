@@ -1,7 +1,7 @@
 package com.example.projetofinal.model;
 
 public class Receita {
-    private String id;
+    private int id;
     private String nome;
     private String ingredientes;
     private String modoPreparo;
@@ -10,18 +10,22 @@ public class Receita {
 
     }
 
-    public Receita(String id, String nome, String ingredientes, String modoPreparo) {
+    public Receita(int id, String nome, String ingredientes, String modoPreparo) {
         this.id = id;
         this.nome = nome;
         this.ingredientes = ingredientes;
         this.modoPreparo = modoPreparo;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void getByNome(String nome){
+
+    }
+
+    public void setId(int id) {
         this.id = id;
     }
 
