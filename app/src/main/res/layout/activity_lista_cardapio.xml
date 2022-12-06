@@ -4,14 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ListaReceitasActivity"
-    android:background="@color/white">
+    tools:context=".view.ListaCardapioActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcReceitas"
+        android:id="@+id/rcRefeicoes"
         android:layout_width="match_parent"
-        android:layout_height="729dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
