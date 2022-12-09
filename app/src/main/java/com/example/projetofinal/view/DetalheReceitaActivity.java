@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.projetofinal.R;
@@ -18,6 +20,7 @@ public class DetalheReceitaActivity extends AppCompatActivity {
     TextView tvModoPreparo;
     ReceitaAdapter adapter;
     ListaReceitasActivity lista;
+    Button btnVoltarListaReceitas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,7 @@ public class DetalheReceitaActivity extends AppCompatActivity {
         tvDetalheNomeReceita = findViewById(R.id.tvDetalheNomeReceita);
         tvDetalheReceita = findViewById(R.id.tvDetalheReceita);
         tvModoPreparo = findViewById(R.id.tvModoPreparo);
+        btnVoltarListaReceitas = findViewById(R.id.btnVoltarListaReceitas);
 
 
         //Pega a intent de outra activity
@@ -66,6 +70,15 @@ public class DetalheReceitaActivity extends AppCompatActivity {
         }
 
         tvModoPreparo.setText(valoresJuntosPreparo.replaceAll("\"", ""));
+
+        /*
+        btnVoltarListaReceitas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(DetalheReceitaActivity.this, ListaReceitasActivity.class);
+                startActivity(intent2);
+            }
+        });*/
 
     }
 }
