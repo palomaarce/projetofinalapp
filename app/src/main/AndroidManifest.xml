@@ -15,6 +15,13 @@
         android:theme="@style/Theme.ProjetoFinal"
         tools:targetApi="31">
         <activity
+            android:name=".view.CadastrarReceitaActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".view.ListaCardapioActivity"
             android:exported="false">
             <meta-data

@@ -5,6 +5,7 @@ public class Receita {
     private String nome;
     private String ingredientes;
     private String modoPreparo;
+    private int idRefeicao;
 
     public Receita(){
 
@@ -15,6 +16,8 @@ public class Receita {
         this.nome = nome;
         this.ingredientes = ingredientes;
         this.modoPreparo = modoPreparo;
+        this.idRefeicao = idRefeicao;
+
     }
 
     public int getId() {
@@ -43,6 +46,14 @@ public class Receita {
 
     public void setIngredientes(String ingredientes) {
         this.ingredientes = ingredientes;
+    }
+
+    public int getIdRefeicao() {
+        return idRefeicao;
+    }
+
+    public void setIdRefeicao(int idRefeicao) {
+        this.idRefeicao = idRefeicao;
     }
 
     public String getModoPreparo() {

@@ -4,32 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="5dp"
-    android:layout_marginLeft="5dp"
-    android:layout_marginTop="5dp"
-    android:layout_marginEnd="5dp"
-    android:layout_marginRight="5dp"
-    android:layout_marginBottom="5dp"
+
     android:background="@color/white">
 
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvReceitas"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingHorizontal="15dp"
-        android:paddingTop="15dp"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="26dp">
+        android:layout_height="60dp"
+        android:elevation="0dp"
+        app:cardBackgroundColor="#88D9DE"
+        app:cardCornerRadius="20dp"
+        tools:ignore="MissingConstraints"
+        >
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvReceitas"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:elevation="0dp"
-            app:cardBackgroundColor="#88D9DE"
-            app:cardCornerRadius="20dp">
-
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
 
             <TextView
                 android:id="@+id/tvNomeReceita"
@@ -38,22 +32,25 @@
                 android:layout_gravity="center"
                 android:paddingHorizontal="20dp"
                 android:text="text"
+                android:drawableRight="@drawable/ic_baseline_chevron_right_24"
 
                 android:textColor="@color/black"
                 android:textSize="18dp" />
+        </LinearLayout>
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="60dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="right"
-                app:srcCompat="@drawable/ic_baseline_chevron_right_24" />
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            app:srcCompat="@drawable/ic_baseline_chevron_right_24" />
 
-        </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="10dp" />
-    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="15dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
