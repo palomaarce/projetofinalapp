@@ -22,16 +22,17 @@ import java.util.List;
 
 public class ReceitasRepository implements Response.Listener<JSONArray>, Response.ErrorListener{
     private final String TAG = "ReceitasRepository";
-    private List<Receita> receitas;
+    private static List<Receita> receitas;
     private static ReceitasRepository instance;
-    private Context contexto;
+    private receitasRepositoryCallback contexto;
     private OnReadyListener onReadyListener;
 
-    public ReceitasRepository(Context contexto) {
+
+    public ReceitasRepository(receitasRepositoryCallback contexto) {
         //tirei o parametro Context contexto
         this.contexto = contexto;
         receitas = new ArrayList<>();
-        RequestQueue queue = Volley.newRequestQueue(contexto);
+        RequestQueue queue = Volley.newRequestQueue(contexto.getContexto());
         //usando o proprio objeto como ResponseListener
 
 
@@ -50,7 +51,9 @@ public class ReceitasRepository implements Response.Listener<JSONArray>, Respons
 
     }
 
-    public static ReceitasRepository getInstance(Context contexto, OnReadyListener orl) {
+
+
+    public static ReceitasRepository getInstance(receitasRepositoryCallback contexto, OnReadyListener orl) {
         if (instance == null) {
             instance = new ReceitasRepository(contexto);
             instance.onReadyListener = orl;
@@ -91,8 +94,8 @@ public class ReceitasRepository implements Response.Listener<JSONArray>, Respons
             try {
                 JSONObject json = response.getJSONObject(i);
                 Log.d(TAG, "onResponse: "+json.toString());
-                receitas.add( new Receita(json.getInt("id"), json.getString("nome"),
-                        json.getString("secao"), json.getString("modoPreparo")));
+                receitas.add( new Receita(i, json.getString("nome"),
+                        json.getString("secao"), json.getString("secao")));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -103,6 +106,17 @@ public class ReceitasRepository implements Response.Listener<JSONArray>, Respons
         }
         onReadyListener = null;
         Log.e(TAG, "onResponse: terminei" );
+        contexto.onLoad(receitas);
+    }
+
+    public static Receita getReceitaByNome(String nome) {
+        Receita ret = null;
+        for(int x=0; x<receitas.size(); x++) {
+            if (receitas.get(x).getNome().equals(nome)) {
+                ret = receitas.get(x);
+            }
+        }
+        return ret;
     }
 /*
     @Override
@@ -136,3 +150,5 @@ public class ReceitasRepository implements Response.Listener<JSONArray>, Respons
     */
 
 }
+
+

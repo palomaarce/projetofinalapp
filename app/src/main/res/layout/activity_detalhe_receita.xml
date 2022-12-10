@@ -25,6 +25,8 @@
 
         app:srcCompat="@drawable/ic_baseline_restaurant_menu_24" />
 
+
+
     <TextView
         android:id="@+id/tvDetalheNomeReceita"
         android:layout_width="match_parent"
@@ -36,17 +38,46 @@
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/image_logoo" />
 
+
+    <ImageView
+        android:id="@+id/image_logoShare"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="159dp"
+
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/image_logoBack"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetalheNomeReceita"
+
+        app:srcCompat="@drawable/ic_baseline_share_24"/>
+
+    <ImageView
+        android:id="@+id/image_logoBack"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="100dp"
+
+        android:layout_toRightOf="@id/image_logoShare"
+        android:verticalScrollbarPosition="left"
+        app:layout_constraintEnd_toStartOf="@+id/image_logoShare"
+        app:layout_constraintRight_toRightOf="@id/image_logoShare"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetalheNomeReceita"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
     <ScrollView
         android:id="@+id/scrollView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="30dp"
         android:background="@drawable/shape_container"
-        app:layout_constraintBottom_toTopOf="@+id/btnVoltarListaReceitas"
+
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDetalheNomeReceita">
+        app:layout_constraintTop_toBottomOf="@+id/image_logoShare">
 
 
         <LinearLayout
@@ -97,16 +128,7 @@
         </LinearLayout>
     </ScrollView>
 
-    <Button
-        android:id="@+id/btnVoltarListaReceitas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:background="@color/white"
-        android:textColor="@color/black"
-        android:text="Voltar"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView3"
-        tools:layout_editor_absoluteX="16dp" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

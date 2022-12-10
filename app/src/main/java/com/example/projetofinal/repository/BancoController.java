@@ -2,6 +2,7 @@ package com.example.projetofinal.repository;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 public class BancoController {
@@ -12,7 +13,7 @@ public class BancoController {
         banco = new CriaBanco(contexto);
     }
 
-    public String inserirDados(int id, String titulo, String ingredientes, String modoPreparo){
+    public String inserirDados(String titulo, String ingredientes, String modoPreparo){
 
         ContentValues valores;
         long resultado;
@@ -22,6 +23,7 @@ public class BancoController {
         valores.put(CriaBanco.NOME, titulo);
         valores.put(CriaBanco.INGREDIENTES, ingredientes);
         valores.put(CriaBanco.MODOPREPARO, modoPreparo);
+        //valores.put(CriaBanco.IDREFEICAO, idRefeicao);
 
         resultado = db.insert(CriaBanco.TABELA, null, valores);
         db.close();
@@ -33,6 +35,20 @@ public class BancoController {
         }
 
     }
+
+    public Cursor carregaDados(){
+        Cursor cursor;
+        String[] campos =  {banco.NOME,banco.INGREDIENTES, banco.MODOPREPARO};
+        db = banco.getReadableDatabase();
+        cursor = db.query(banco.TABELA, campos, null, null, null, null, null, null);
+
+        if(cursor!=null){
+            cursor.moveToFirst();
+        }
+        db.close();
+        return cursor;
+    }
+
 
     }
 

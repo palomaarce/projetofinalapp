@@ -13,6 +13,7 @@ public class CriaBanco extends SQLiteOpenHelper {
     public static final String NOME = "NOME";
     public static final String INGREDIENTES = "INGREDIENTES";
     public static final String MODOPREPARO = "MODOPREPARO";
+    public static final String IDREFEICAO = "IDREFEICAO";
     public static final int VERSAO = 1;
 
     public CriaBanco(@Nullable Context context) {
@@ -23,11 +24,11 @@ public class CriaBanco extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         //criar o banco de dados
         String sql = "CREATE TABLE "+TABELA+"("
-                + ID + " integer primary key autoincrement,"
+                //+ ID + " integer primary key autoincrement,"
                 + NOME + " text,"
                 + INGREDIENTES + " text,"
-                + MODOPREPARO + " text"
-                +")";
+                + MODOPREPARO + " text" + ")";
+        //+ IDREFEICAO + " text" + ")";
         sqLiteDatabase.execSQL(sql);
     }
 

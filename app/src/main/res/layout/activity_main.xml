@@ -37,7 +37,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        android:radius="20dp"/>
+        android:radius="20dp"
+        />
 
     <EditText
         android:id="@+id/tvLoginSenha"
@@ -64,7 +65,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="10dp"
-        android:backgroundTint="#006064"
+        android:backgroundTint="#88D9DE"
         android:backgroundTintMode="src_in"
         android:ellipsize="middle"
         android:text="ENTRAR"
@@ -81,9 +82,9 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="70dp"
         android:layout_marginEnd="10dp"
-        android:background="#88D9DE"
+        android:backgroundTint="#88D9DE"
         android:text="Ainda não tem uma conta? Clique aqui"
-        android:textColor="#006064"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />

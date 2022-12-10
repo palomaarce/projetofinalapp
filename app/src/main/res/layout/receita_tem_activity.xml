@@ -5,7 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
 
-    android:background="@color/white">
+    android:background="@color/white"
+    android:layout_marginStart="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginBottom="5dp">
 
 
     <androidx.cardview.widget.CardView
@@ -16,13 +22,16 @@
         app:cardBackgroundColor="#88D9DE"
         app:cardCornerRadius="20dp"
         tools:ignore="MissingConstraints"
-        >
+        tools:layout_editor_absoluteX="15dp"
+        tools:layout_editor_absoluteY="15dp">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:paddingHorizontal="15dp"
+            android:paddingTop="15dp"
             >
 
             <TextView
@@ -32,8 +41,6 @@
                 android:layout_gravity="center"
                 android:paddingHorizontal="20dp"
                 android:text="text"
-                android:drawableRight="@drawable/ic_baseline_chevron_right_24"
-
                 android:textColor="@color/black"
                 android:textSize="18dp" />
         </LinearLayout>

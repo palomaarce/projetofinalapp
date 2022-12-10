@@ -9,10 +9,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.projetofinal.R;
 import com.example.projetofinal.adapter.ReceitaAdapter;
+import com.example.projetofinal.repository.ReceitasRepository;
 
 public class DetalheReceitaActivity extends AppCompatActivity {
     TextView tvDetalheNomeReceita;
@@ -20,7 +22,8 @@ public class DetalheReceitaActivity extends AppCompatActivity {
     TextView tvModoPreparo;
     ReceitaAdapter adapter;
     ListaReceitasActivity lista;
-    Button btnVoltarListaReceitas;
+    ImageView back;
+    ImageView share;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +32,9 @@ public class DetalheReceitaActivity extends AppCompatActivity {
         tvDetalheNomeReceita = findViewById(R.id.tvDetalheNomeReceita);
         tvDetalheReceita = findViewById(R.id.tvDetalheReceita);
         tvModoPreparo = findViewById(R.id.tvModoPreparo);
-        btnVoltarListaReceitas = findViewById(R.id.btnVoltarListaReceitas);
+
+        back = findViewById(R.id.image_logoBack);
+        share = findViewById(R.id.image_logoShare);
 
 
         //Pega a intent de outra activity
@@ -39,9 +44,10 @@ public class DetalheReceitaActivity extends AppCompatActivity {
         //Recuperei a string da outra activity
         String nomeReceita = intent.getStringExtra("nomeReceita");
         tvDetalheNomeReceita.setText(nomeReceita);
-        String ingredientes = ListaReceitasActivity.getReceitaByNome(nomeReceita).getIngredientes();
+        String ingredientes = ReceitasRepository.getReceitaByNome(nomeReceita).getIngredientes();
+        //ReceitasRepository.getReceitaByNome(nomeReceita).get
 
-        String modoPrepado = ListaReceitasActivity.getReceitaByNome(nomeReceita).getModoPreparo();
+        String modoPrepado = ReceitasRepository.getReceitaByNome(nomeReceita).getModoPreparo();
 
         int auxiliar1 = ingredientes.indexOf("Ingredientes");
         int auxiliar2 = ingredientes.indexOf("]");
@@ -71,14 +77,29 @@ public class DetalheReceitaActivity extends AppCompatActivity {
 
         tvModoPreparo.setText(valoresJuntosPreparo.replaceAll("\"", ""));
 
-        /*
-        btnVoltarListaReceitas.setOnClickListener(new View.OnClickListener() {
+
+
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent2 = new Intent(DetalheReceitaActivity.this, ListaReceitasActivity.class);
                 startActivity(intent2);
             }
-        });*/
+        });
+
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, nomeReceita + "\n Ingredientes: \n " + ingredientes + "\n Modo de preparo: " + modoPrepado);
+                sendIntent.setType("text/plain");
+
+                Intent shareIntent = Intent.createChooser(sendIntent, null);
+                startActivity(shareIntent);
+
+            }
+        });
 
     }
 }

@@ -41,6 +41,7 @@
         android:id="@+id/shape_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/shape_container"
         android:orientation="vertical"
         android:paddingHorizontal="15dp"
@@ -116,34 +117,6 @@
             android:layout_width="match_parent"
             android:layout_height="10dp" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvContador"
-            android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:elevation="0dp"
-            app:cardBackgroundColor="#88D9DE"
-            app:cardCornerRadius="20dp">
-
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingHorizontal="20dp"
-                android:text="Contador de calorias"
-
-                android:textColor="@color/black"
-                android:textSize="25dp" />
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="end"
-                app:srcCompat="@drawable/ic_baseline_calculate_24" />
-
-        </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/button3"

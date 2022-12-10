@@ -20,6 +20,16 @@ public class Receita {
 
     }
 
+    public Receita(int id, String nome, String ingredientes, String modoPreparo, int idRefeicao) {
+        this.id = id;
+        this.nome = nome;
+        this.ingredientes = ingredientes;
+        this.modoPreparo = modoPreparo;
+        this.idRefeicao = idRefeicao;
+        this.idRefeicao = idRefeicao;
+
+    }
+
     public int getId() {
         return id;
     }

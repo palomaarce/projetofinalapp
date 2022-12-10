@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Adapter;
@@ -19,7 +20,9 @@ import com.android.volley.toolbox.Volley;
 import com.example.projetofinal.R;
 import com.example.projetofinal.adapter.ReceitaAdapter;
 import com.example.projetofinal.model.Receita;
+import com.example.projetofinal.repository.OnReadyListener;
 import com.example.projetofinal.repository.ReceitasRepository;
+import com.example.projetofinal.repository.receitasRepositoryCallback;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,7 +31,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListaReceitasActivity extends AppCompatActivity {
+public class ListaReceitasActivity extends AppCompatActivity implements receitasRepositoryCallback {
     RecyclerView recycler;
     public static List<Receita> receitas;
     private static String JSON_URL="https://raw.githubusercontent.com/adrianosferreira/afrodite.json/master/afrodite.json ";
@@ -41,7 +44,7 @@ public class ListaReceitasActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: Activity Lista de receitas iniciado");
         setContentView(R.layout.activity_lista_receitas);
 
-        recycler = findViewById(R.id.rcReceitas);
+
         receitas = new ArrayList<>();
 
         //repository = new ReceitasRepository(this);
@@ -53,8 +56,20 @@ public class ListaReceitasActivity extends AppCompatActivity {
 
         //recycler.setAdapter(adapter);
 
+    //ANTES
+        //extrairReceitas();
 
-        extrairReceitas();
+        //DEPOIS
+        ReceitasRepository.getInstance(this, new OnReadyListener() {
+            @Override
+            public void onReady() {
+                recycler = findViewById(R.id.rcReceitas);
+                ReceitaAdapter adapter = new ReceitaAdapter(ReceitasRepository.getInstance().getReceitas());
+                recycler.setAdapter(adapter);
+                LinearLayoutManager llm1 = new LinearLayoutManager(getApplicationContext());
+                recycler.setLayoutManager(llm1);
+            }
+        });
 
 
     }
@@ -91,9 +106,22 @@ public class ListaReceitasActivity extends AppCompatActivity {
 
                 recycler.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
                 //adapter = new ReceitaAdapter(getApplicationContext(), receitas);
-                adapter = new ReceitaAdapter(getApplicationContext(), receitas);
+
+                //ANTES
+                //adapter = new ReceitaAdapter(receitas);
+
+                //DEPOIS
+
+                //ANTES
+                /*
+                adapter = new ReceitaAdapter(ReceitasRepository.getInstance(this).getReceitas());
 
                 recycler.setAdapter(adapter);
+
+                 */
+
+                //depois
+
 
 
 
@@ -119,6 +147,23 @@ public class ListaReceitasActivity extends AppCompatActivity {
             }
         }
         return ret;
+    }
+
+    @Override
+    public Context getContexto() {
+        return this;
+    }
+
+    @Override
+    public void onLoad(List<Receita> receitas) {
+        adapter = new ReceitaAdapter(getApplicationContext(), receitas);
+        Log.d(TAG, "onLoad: tamanho " + receitas.size());
+        recycler.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+
+
+        recycler.setAdapter(adapter);
+
+
     }
     /*
     public static Receita getReceitaByNome(String nome) {

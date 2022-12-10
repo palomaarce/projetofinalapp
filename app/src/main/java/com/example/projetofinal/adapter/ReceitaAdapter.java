@@ -25,18 +25,26 @@ public class ReceitaAdapter extends RecyclerView.Adapter {
     LayoutInflater inflater;
     List<Receita> receitas;
 
+
     public ReceitaAdapter(Context ctx, List<Receita> receitas){
         this.inflater = LayoutInflater.from(ctx);
         this.receitas = receitas;
     }
 
+
+    public ReceitaAdapter(List<Receita> receitas){
+        this.receitas = receitas;
+    }
+
+
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.receita_tem_activity, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.receita_tem_activity, parent, false);
         //View view = inflater.inflate(R.layout.receita_item_activity, parent, false);
-
-        return new ReceitaViewHolder(view);
+        ReceitaViewHolder viewHolder = new ReceitaViewHolder(view);
+        return viewHolder;
     }
 
     @Override

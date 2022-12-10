@@ -47,6 +47,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Cadastrar"
+        app:layout_constraintTop_toBottomOf="@+id/spRefeicoes"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <Spinner
+        android:id="@+id/spRefeicoes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:minHeight="48dp"
         app:layout_constraintTop_toBottomOf="@+id/etModoPreparo"
-        tools:layout_editor_absoluteX="-4dp" />
+        tools:layout_editor_absoluteX="-16dp"
+        android:spinnerMode="dropdown"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
