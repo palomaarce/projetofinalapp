@@ -15,8 +15,10 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.projetofinal.R;
+import com.example.projetofinal.model.Receita;
 import com.example.projetofinal.model.Refeicao;
 import com.example.projetofinal.repository.BancoController;
+import com.example.projetofinal.repository.ReceitaDAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,7 @@ public class CadastrarReceitaActivity extends AppCompatActivity {
     Spinner spinnerDropdown;
     //ListaCardapioActivity listaCardapio;
     List<String> refeicoes;
+    private ReceitaDAO dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,8 @@ public class CadastrarReceitaActivity extends AppCompatActivity {
         modoPreparoReceita = findViewById(R.id.etModoPreparo);
         btnCadastrar = findViewById(R.id.btnCadastrarReceita);
         spinnerDropdown = findViewById(R.id.spRefeicoes);
+
+        dao = new ReceitaDAO(this);
         //listaCardapio = new ListaCardapioActivity();
         refeicoes = new ArrayList<>();
         refeicoes.add("Café da manhã");
@@ -56,9 +61,23 @@ public class CadastrarReceitaActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, refeicoes);
         spinnerDropdown.setAdapter(adapter);
 
+        btnCadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Receita receita = new Receita();
+                receita.setNome(tituloReceita.getText().toString());
+                receita.setIngredientes(ingredientesReceita.getText().toString());
+                receita.setModoPreparo(modoPreparoReceita.getText().toString());
+                receita.setRefeicao(spinnerDropdown.getSelectedItem().toString());
+                System.out.println("Refeição selecionada foi " + spinnerDropdown.getSelectedItem().toString());
+                long id = dao.inserir(receita);
+                Toast.makeText(CadastrarReceitaActivity.this, "Receita inserida com id " + id, Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
 
+/*
                 btnCadastrar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -81,6 +100,8 @@ public class CadastrarReceitaActivity extends AppCompatActivity {
 
                     }
                 });
+
+ */
 
     }
 }

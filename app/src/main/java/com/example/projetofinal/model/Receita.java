@@ -1,11 +1,22 @@
 package com.example.projetofinal.model;
 
-public class Receita {
+import java.io.Serializable;
+
+public class Receita implements Serializable {
     private int id;
     private String nome;
     private String ingredientes;
     private String modoPreparo;
     private int idRefeicao;
+    private String refeicao;
+
+    public String getRefeicao() {
+        return refeicao;
+    }
+
+    public void setRefeicao(String refeicao) {
+        this.refeicao = refeicao;
+    }
 
     public Receita(){
 
@@ -72,5 +83,10 @@ public class Receita {
 
     public void setModoPreparo(String modoPreparo) {
         this.modoPreparo = modoPreparo;
+    }
+
+    @Override
+    public String toString(){
+        return nome;
     }
 }

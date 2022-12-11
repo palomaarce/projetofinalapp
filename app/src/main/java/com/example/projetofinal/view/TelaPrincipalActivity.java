@@ -30,7 +30,8 @@ public class TelaPrincipalActivity extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TelaPrincipalActivity.this, ConsultaSQLite.class);
+                //Intent intent = new Intent(TelaPrincipalActivity.this, CadastrarReceitaActivity.class);
+                Intent intent = new Intent(TelaPrincipalActivity.this, DetalheRefeicaoActivity.class);
                 startActivity(intent);
             }
         });
