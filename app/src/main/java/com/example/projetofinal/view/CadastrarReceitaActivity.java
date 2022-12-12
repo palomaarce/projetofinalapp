@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,8 +15,6 @@ import android.widget.Toast;
 
 import com.example.projetofinal.R;
 import com.example.projetofinal.model.Receita;
-import com.example.projetofinal.model.Refeicao;
-import com.example.projetofinal.repository.BancoController;
 import com.example.projetofinal.repository.ReceitaDAO;
 
 import java.util.ArrayList;
@@ -59,6 +56,7 @@ public class CadastrarReceitaActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: " + refeicoes.get(1) + " - size " + refeicoes.size());
         Log.e(TAG, "onCreate: " + refeicoes.get(1) + " - size " + refeicoes.size());
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, refeicoes);
+        //ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.receita_tem_activity, refeicoes);
         spinnerDropdown.setAdapter(adapter);
 
         btnCadastrar.setOnClickListener(new View.OnClickListener() {

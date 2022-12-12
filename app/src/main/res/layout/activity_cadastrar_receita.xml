@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.CadastrarReceitaActivity">
+    tools:context=".view.CadastrarReceitaActivity"
+    android:background="@color/white">
 
     <EditText
         android:id="@+id/etTituloReceita"
@@ -15,7 +16,10 @@
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        android:hint="Digite o título da sua receita"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"/>
 
     <EditText
         android:id="@+id/etIngredientes"
@@ -27,7 +31,10 @@
         android:minHeight="48dp"
         app:layout_constraintTop_toBottomOf="@+id/etTituloReceita"
         tools:ignore="SpeakableTextPresentCheck"
-        tools:layout_editor_absoluteX="87dp" />
+        tools:layout_editor_absoluteX="87dp"
+        android:hint="Digite os ingredientes da sua receita"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"/>
 
     <EditText
         android:id="@+id/etModoPreparo"
@@ -39,7 +46,10 @@
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etIngredientes"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        android:hint="Digite o modo de preparo da sua receita"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"/>
 
     <Button
         android:id="@+id/btnCadastrarReceita"
@@ -48,7 +58,19 @@
         android:layout_marginTop="30dp"
         android:text="Cadastrar"
         app:layout_constraintTop_toBottomOf="@+id/spRefeicoes"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="0dp"
+        android:background="#88D9DE"
+        android:backgroundTint="#88D9DE"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Selecione a categoria da sua receita:"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etModoPreparo" />
 
     <Spinner
         android:id="@+id/spRefeicoes"
@@ -56,7 +78,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:minHeight="48dp"
-        app:layout_constraintTop_toBottomOf="@+id/etModoPreparo"
-        tools:layout_editor_absoluteX="-16dp"
-        android:spinnerMode="dropdown"/>
+        android:spinnerMode="dropdown"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:outlineSpotShadowColor="@color/black"
+        android:outlineAmbientShadowColor="@color/black"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

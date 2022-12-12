@@ -25,16 +25,9 @@ public class TelaPrincipalActivity extends AppCompatActivity {
         cvReceitas = findViewById(R.id.cvReceitas);
         cvCardapio = findViewById(R.id.cvCardapio);
         //cvContador = findViewById(R.id.cvContador);
-        button3 = findViewById(R.id.button3);
 
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Intent intent = new Intent(TelaPrincipalActivity.this, CadastrarReceitaActivity.class);
-                Intent intent = new Intent(TelaPrincipalActivity.this, DetalheRefeicaoActivity.class);
-                startActivity(intent);
-            }
-        });
+
+
 
         cvCardapio.setOnClickListener(new View.OnClickListener() {
             @Override

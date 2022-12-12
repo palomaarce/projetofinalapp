@@ -76,6 +76,7 @@ class ReceitaViewHolder extends RecyclerView.ViewHolder{
                 Intent intent = new Intent(view.getContext(), DetalheReceitaActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("nomeReceita", nomeReceita.getText());
+                intent.putExtra("activityName", "ListaReceitas");
                 view.getContext().startActivity(intent);
             }
         });

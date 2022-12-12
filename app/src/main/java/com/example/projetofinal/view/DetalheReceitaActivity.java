@@ -4,6 +4,7 @@ import static android.content.ContentValues.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 
 import com.example.projetofinal.R;
 import com.example.projetofinal.adapter.ReceitaAdapter;
+import com.example.projetofinal.model.Receita;
+import com.example.projetofinal.repository.ReceitaDAO;
 import com.example.projetofinal.repository.ReceitasRepository;
 
 public class DetalheReceitaActivity extends AppCompatActivity {
@@ -24,7 +27,11 @@ public class DetalheReceitaActivity extends AppCompatActivity {
     ListaReceitasActivity lista;
     ImageView back;
     ImageView share;
+    String ingredientes;
+    String modoPrepado;
+    
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,45 +44,64 @@ public class DetalheReceitaActivity extends AppCompatActivity {
         share = findViewById(R.id.image_logoShare);
 
 
+
         //Pega a intent de outra activity
         Intent intent = getIntent();
 
 
         //Recuperei a string da outra activity
         String nomeReceita = intent.getStringExtra("nomeReceita");
-        tvDetalheNomeReceita.setText(nomeReceita);
-        String ingredientes = ReceitasRepository.getReceitaByNome(nomeReceita).getIngredientes();
-        //ReceitasRepository.getReceitaByNome(nomeReceita).get
+        String intentAnterior = intent.getStringExtra("activityName");
+        System.out.println("a intent anterior é " + intentAnterior);
+        if(intentAnterior.equals("DetalheRefeicaoActivity") || intentAnterior.contains("DetalheRefeicaoActivity")){
+            System.out.println("entrou no if");
+            ReceitaDAO  receitaDAO = new ReceitaDAO(this);
+            Receita r = receitaDAO.obterReceitaPeloNome(nomeReceita);
+            ingredientes = r.getIngredientes();
 
-        String modoPrepado = ReceitasRepository.getReceitaByNome(nomeReceita).getModoPreparo();
+            modoPrepado = r.getModoPreparo();
+            tvDetalheNomeReceita.setText(r.getNome());
+            tvDetalheReceita.setText(r.getIngredientes());
+            tvModoPreparo.setText(r.getModoPreparo());
 
-        int auxiliar1 = ingredientes.indexOf("Ingredientes");
-        int auxiliar2 = ingredientes.indexOf("]");
+        } else {
 
-        String corte = ingredientes.substring(auxiliar1+26,auxiliar2-3);
-        String[] valores = corte.split(",");
+            System.out.println("entrou no else");
+            tvDetalheNomeReceita.setText(nomeReceita);
+            ingredientes = ReceitasRepository.getReceitaByNome(nomeReceita).getIngredientes();
+            //ReceitasRepository.getReceitaByNome(nomeReceita).get
 
-        Log.d(TAG, "onCreate: ingredientes " + valores + " modo de preparo: " + modoPrepado);
+            modoPrepado = ReceitasRepository.getReceitaByNome(nomeReceita).getModoPreparo();
 
-        String valoresJuntos="";
-        for(int x=0; x< valores.length; x++){
-            valoresJuntos += System.lineSeparator() + valores[x];
+            int auxiliar1 = ingredientes.indexOf("Ingredientes");
+            int auxiliar2 = ingredientes.indexOf("]");
 
+            String corte = ingredientes.substring(auxiliar1 + 26, auxiliar2 - 3);
+            String[] valores = corte.split(",");
+
+            Log.d(TAG, "onCreate: ingredientes " + valores + " modo de preparo: " + modoPrepado);
+
+            String valoresJuntos = "";
+            for (int x = 0; x < valores.length; x++) {
+                valoresJuntos += System.lineSeparator() + valores[x];
+
+            }
+
+            //tvDetalheReceita.setText(ListaReceitasActivity.getReceitaByNome(nomeReceita).getIngredientes());
+            tvDetalheReceita.setText(valoresJuntos.replaceAll("\"", ""));
+
+            int auxiliar3 = modoPrepado.indexOf("Modo de Preparo");
+            int auxiliar4 = modoPrepado.indexOf("]", auxiliar3);
+            String corte2 = modoPrepado.substring(auxiliar3 + 30, auxiliar4 - 3);
+            String[] valores2 = corte2.split(",");
+            String valoresJuntosPreparo = "";
+            for (int z = 0; z < valores2.length; z++) {
+                valoresJuntosPreparo += System.lineSeparator() + valores2[z];
+            }
+
+            tvModoPreparo.setText(valoresJuntosPreparo.replaceAll("\"", ""));
         }
 
-        //tvDetalheReceita.setText(ListaReceitasActivity.getReceitaByNome(nomeReceita).getIngredientes());
-        tvDetalheReceita.setText(valoresJuntos.replaceAll("\"", ""));
-        
-        int auxiliar3 = modoPrepado.indexOf("Modo de Preparo");
-        int auxiliar4 = modoPrepado.indexOf("]", auxiliar3);
-        String corte2 = modoPrepado.substring(auxiliar3+30, auxiliar4-3);
-        String[] valores2 = corte2.split(",");
-        String valoresJuntosPreparo="";
-        for(int z=0; z<valores2.length; z++){
-            valoresJuntosPreparo+= System.lineSeparator() + valores2[z];
-        }
-
-        tvModoPreparo.setText(valoresJuntosPreparo.replaceAll("\"", ""));
 
 
 
