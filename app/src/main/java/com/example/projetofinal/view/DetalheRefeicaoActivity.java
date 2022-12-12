@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -28,7 +31,9 @@ public class DetalheRefeicaoActivity extends AppCompatActivity {
     ReceitaDAO dao;
     List<Receita> receitas;
     List<Receita> receitasFiltrados = new ArrayList<>();
+
     ImageButton cadastrarReceita;
+
 
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
@@ -38,6 +43,7 @@ public class DetalheRefeicaoActivity extends AppCompatActivity {
         tvNomeReceitaRefeicao = findViewById(R.id.tvNomeReceitaRefeicao);
         cadastrarReceita = findViewById(R.id.imageButton);
 
+
         Intent intent = getIntent();
         String nomeRefeicao = intent.getStringExtra("nomeRefeicao");
         tvNomeReceitaRefeicao.setText("Receitas para " + nomeRefeicao);
@@ -46,6 +52,8 @@ public class DetalheRefeicaoActivity extends AppCompatActivity {
         receitas = dao.obterReceitasPorRefeicao(nomeRefeicao);
         ArrayAdapter<Receita> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, receitas);
         lista.setAdapter(adapter);
+
+
 
         cadastrarReceita.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,4 +78,6 @@ public class DetalheRefeicaoActivity extends AppCompatActivity {
 
 
     }
+
+
 }
